@@ -75,12 +75,12 @@ void Engine::run()
         player->update(delta);
         player->draw();
 
+        /*
         int BodyCount = 0;
         for (b2Body* BodyIterator = GameObjects::world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
         {
             if (BodyIterator->GetType() == b2_dynamicBody)
             {
-                /*
                 sf::Sprite Sprite;
                 Sprite.setTexture(BoxTexture);
                 Sprite.setOrigin(16.f, 16.f);
@@ -88,7 +88,6 @@ void Engine::run()
                 Sprite.setRotation(BodyIterator->GetAngle() * 180/b2_pi);
                 GameObjects::window->draw(Sprite);
                 ++BodyCount;
-                */
             }
             else
             {
@@ -100,6 +99,7 @@ void Engine::run()
                 GameObjects::window->draw(GroundSprite);
             }
         }
+        */
 
 
 

@@ -30,15 +30,8 @@ int Entity::getType()
 void Entity::update(sf::Time delta)
 {
     sprite->update(delta);
-
-    for (b2Body* BodyIterator = GameObjects::world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
-    {
-        if (BodyIterator->GetUserData() == this)
-        {
-            sprite->setPosition(GameObjects::SCALE * BodyIterator->GetPosition().x, GameObjects::SCALE * BodyIterator->GetPosition().y);
-            sprite->setRotation(BodyIterator->GetAngle() * 180/b2_pi);
-        }
-    }
+    sprite->setPosition(GameObjects::SCALE * body->GetPosition().x, GameObjects::SCALE * body->GetPosition().y);
+    sprite->setRotation(body->GetAngle() * 180/b2_pi);
 }
 
 void Entity::updateEvents(sf::Event event)

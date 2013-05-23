@@ -37,7 +37,7 @@ void Player::updateEvents(sf::Event event)
     {
         if (event.key.code == sf::Keyboard::W)
         {
-            float impulse = body->GetMass() * 6;
+            float impulse = body->GetMass() * 4;
             body->SetAwake(true);
             body->ApplyLinearImpulse( b2Vec2(0,-impulse), body->GetWorldCenter() );
             sprite->setAnimation(*jumpingAnimation);
