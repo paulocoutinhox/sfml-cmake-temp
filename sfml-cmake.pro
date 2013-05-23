@@ -17,10 +17,17 @@ unix:!macx {
 
 INCLUDEPATH += "$${PWD}/library/sfml/$${CONFIG_PLATFORM_PATH}/include"
 INCLUDEPATH += "$${PWD}/library/sndfile/$${CONFIG_PLATFORM_PATH}/include"
+INCLUDEPATH += "$${PWD}/library/box2d/$${CONFIG_PLATFORM_PATH}/include"
 
 SOURCES += main.cpp \
     Engine.cpp \
-    Util.cpp
+    Util.cpp \
+    Animation.cpp \
+    AnimatedSprite.cpp \
+    GameContactListener.cpp \
+    Entity.cpp \
+    Player.cpp \
+    GameObjects.cpp
 
 OTHER_FILES += \
     build.sh \
@@ -32,9 +39,16 @@ OTHER_FILES += \
     .gitignore \
     build/cmake/modules/FindSFML.cmake \
     ResourcePath.mm \
-    README.md
+    README.md \
+    build/cmake/modules/FindBox2D.cmake
 
 HEADERS += \
     ResourcePath.hpp \
     Engine.h \
-    Util.h
+    Util.h \
+    Animation.h \
+    AnimatedSprite.h \
+    GameContactListener.h \
+    Entity.h \
+    Player.h \
+    GameObjects.h

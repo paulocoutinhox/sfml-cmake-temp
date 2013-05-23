@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # project variables
-set(PROJECT_NAME "sfml-project")
+set(PROJECT_NAME "MagicAndZombie")
 
 # project source files
 set(
@@ -12,6 +12,18 @@ set(
     ../Engine.cpp
     ../Util.h
     ../Util.cpp
+    ../Animation.h
+    ../Animation.cpp
+    ../AnimatedSprite.h
+    ../AnimatedSprite.cpp
+    ../Entity.h
+    ../Entity.cpp
+    ../Player.h
+    ../Player.cpp
+    ../GameObjects.h
+    ../GameObjects.cpp
+    ../GameContactListener.h
+    ../GameContactListener.cpp
 )
 
 if(APPLE)
@@ -38,6 +50,8 @@ set(SFML_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/library/sfml/${TARGET_SYSTEM}/include"
 set(SFML_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/library/sfml/${TARGET_SYSTEM}/lib")
 set(SNDFILE_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/library/sndfile/${TARGET_SYSTEM}/lib")
 set(FREETYPE_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/library/freetype/${TARGET_SYSTEM}/lib")
+set(BOX2D_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/library/box2d/${TARGET_SYSTEM}/include")
+set(BOX2D_LIBRARY_DIR "${CMAKE_SOURCE_DIR}/library/box2d/${TARGET_SYSTEM}/lib")
 
 # setup project name
 project(${PROJECT_NAME})
@@ -58,6 +72,13 @@ include_directories(
     ${SFML_INCLUDE_DIR}
 )
 
+# setup box2d
+find_package(Box2D REQUIRED)
+
+include_directories(
+    ${BOX2D_INCLUDE_DIR}
+)
+
 # setup compile process
 add_executable(
     ${PROJECT_NAME}
@@ -73,7 +94,7 @@ else()
     set(EXTRA_TARGET_LINK_LIBRARIES "")
 endif()
 
-target_link_libraries(${PROJECT_NAME} ${EXTRA_TARGET_LINK_LIBRARIES} ${SFML_LIBRARIES} ${SNDFILE_LIBRARY})
+target_link_libraries(${PROJECT_NAME} ${EXTRA_TARGET_LINK_LIBRARIES} ${SFML_LIBRARIES} ${SNDFILE_LIBRARY} ${BOX2D_LIBRARY})
 
 # copy files
 if(APPLE)

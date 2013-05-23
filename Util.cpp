@@ -9,3 +9,15 @@ void Util::log(std::string msg)
 {
     std::cout << "DEBUG: " << msg << std::endl;
 }
+
+std::string Util::convertIntToString(int value)
+{
+    std::stringstream ss;
+    ss << value;
+    return ss.str();
+}
+
+int Util::convertUserDataToInt(void *param)
+{
+    return *((int*)(&param));
+}
